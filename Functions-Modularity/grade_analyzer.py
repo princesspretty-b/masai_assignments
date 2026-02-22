@@ -1,3 +1,7 @@
+# Name: Bhuvaneshwari G
+# Roll Number: IITP_AIMLTN_2602317
+# Assignment: Python Function & Modularity - Subjective Question
+
 def process_scores(students):
     """
     Calculate the average score (rounded to 2 decimals) for each student.
