@@ -1,4 +1,3 @@
-# Import Libraries
 import os
 import numpy as np
 import pandas as pd
@@ -14,7 +13,15 @@ file_path = os.path.join(path, "Diabetes Missing Data.csv")
 # Task 1: Load the dataset into a pandas DataFrame using pd.read_csv(). 
 # Print the first five rows, the column data types (.dtypes), and the DataFrame shape.
 
-df = pd.read_csv(file_path)
+df_ori = pd.read_csv(file_path)
+
+# Duplicate 20% of the dataset
+duplicate_fraction = 0.2
+duplicate_rows = df_ori.sample(frac=duplicate_fraction, random_state=42)
+df = pd.concat([df_ori, duplicate_rows], ignore_index=True)
+df = df.sample(frac=1, random_state=42).reset_index(drop=True)
+df.to_csv("diabetes_dataset.csv", index=False)
+print(f"\nShape : {df.shape}")
 
 print(df.head())
 print(f"\nData Types\n{df.dtypes}")
